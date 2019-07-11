@@ -6,43 +6,27 @@
     {
     	If (GetKeyState("XButton2", "P")) {
             SendInput {Control Down}
-	        Sleep 125
+	        Sleep MAIMING_STRIKE_SLEEP_TIME
 	        SendInput {f}
-	        Sleep 125
+	        Sleep MAIMING_STRIKE_SLEEP_TIME
 	        SendInput {Control Up}
-            Sleep 125
+            Sleep MAIMING_STRIKE_SLEEP_TIME
         } else {
             Return
         }
     }
 
     ; Semi-auto to full auto when Caps is pressed
+    ; Semi-autos are capped at a fire rate of 10, so we click 40 times a second
+    ; to ensure that we hit the maximum fire rate.
     LButton::
     Loop
     {
         If (GetKeyState("CapsLock", "T") && GetKeyState("LButton", "P")) {
             Click
-            Sleep 30
+            Sleep 25
         } else {
             Return
         }
     }
-
-    ; Automatic Volt Discharge / Equinox Maim for ESO
-    F12::
-        toggle := !toggle
-        While toggle {
-            Send 4
-            Sleep 11000
-        }
-    Return
-
-    ; Automatic Rhino Roar for ESO
-    F11::
-        toggle := !toggle
-        While toggle {
-            Send 3
-            Sleep 38000
-        }
-    Return
 }
