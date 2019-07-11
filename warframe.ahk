@@ -1,3 +1,5 @@
+MAIMING_STRIKE_SLEEP_TIME := 125
+
 #IfWinActive Warframe
 {
     ; Slide Attack
