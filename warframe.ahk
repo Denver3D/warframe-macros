@@ -14,6 +14,7 @@ MAIMING_STRIKE_SLEEP_TIME := 125
 	        SendInput {Control Up}
             Sleep MAIMING_STRIKE_SLEEP_TIME
         } else {
+            Click
             Return
         }
     }
@@ -21,14 +22,13 @@ MAIMING_STRIKE_SLEEP_TIME := 125
     ; Semi-auto to full auto when Caps is pressed
     ; Semi-autos are capped at a fire rate of 10, so we click 40 times a second
     ; to ensure that we hit the maximum fire rate.
-    LButton::
-    Loop
-    {
-        If (GetKeyState("CapsLock", "T") && GetKeyState("LButton", "P")) {
-            Click
+    ~LButton::
+    If (GetKeyState("CapsLock", "T")) {
+    	While (GetKeyState("LButton", "P")) {
+    		Click
             Sleep 25
-        } else {
-            Return
-        }
+    	}
+    	Return
     }
+    Return
 }
