@@ -14,7 +14,6 @@ MAIMING_STRIKE_SLEEP_TIME := 125
 	        SendInput {Control Up}
             Sleep MAIMING_STRIKE_SLEEP_TIME
         } else {
-            Click
             Return
         }
     }
